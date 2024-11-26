@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Complet pour Afficher l'Écran Android sur PC Windows</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header, footer {
+            background-color: #0078D7;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #0078D7;
+        }
+        h3 {
+            color: #005A9E;
+        }
+        p, ul, ol {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d14;
+            font-family: Consolas, "Courier New", monospace;
+        }
+        .note {
+            background-color: #fffae6;
+            border-left: 6px solid #ffe58f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 6px solid #ff4d4f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 40px;
+        }
+        ol {
+            margin-left: 40px;
+        }
+        a {
+            color: #0078D7;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Introduction</h2>
+    <p>Ce guide fournit des instructions détaillées pour afficher l'écran de votre téléphone Android sur votre ordinateur Windows. Plusieurs méthodes sont présentées, ainsi que des solutions aux problèmes courants.</p>
+
+    <h2>Méthode 1 : Utiliser l'Application Officielle Windows "Téléphone Link"</h2>
+    <h3>Prérequis</h3>
+    <ul>
+        <li><strong>Téléphone Android</strong> avec Android 7.0 ou une version ultérieure.</li>
+        <li><strong>Ordinateur Windows</strong> exécutant Windows 10 ou 11.</li>
+        <li>Les deux appareils connectés au <strong>même réseau Wi-Fi</strong>.</li>
+    </ul>
+
+    <h3>Étapes</h3>
+    <ol>
+        <li><strong>Sur le PC :</strong> Ouvrez l'application <em>"Téléphone Link"</em> (anciennement appelée <em>"Votre Téléphone"</em>). Si elle n'est pas installée, téléchargez-la depuis le <strong>Microsoft Store</strong>.</li>
+        <li><strong>Sur le Téléphone :</strong> Téléchargez l'application <em>"Link to Windows"</em> depuis le <strong>Google Play Store</strong> et connectez-vous avec votre compte Microsoft.</li>
+        <li><strong>Connexion des Appareils :</strong> Suivez les instructions pour appairer les deux appareils via le même réseau Wi-Fi.</li>
+        <li><strong>Affichage de l'Écran :</strong> Une fois connecté, vous pourrez projeter l'écran de votre téléphone sur votre PC et interagir avec vos applications.</li>
+    </ol>
+
+    <h2>Méthode 2 : Utiliser "Scrcpy" (Gratuit et Open Source)</h2>
+    <h3>Prérequis</h3>
+    <ul>
+        <li><strong>Téléphone Android</strong> avec le <strong>Mode Développeur</strong> et le <strong>Débogage USB</strong> activés.</li>
+        <li><strong>Ordinateur Windows</strong> avec les <strong>Android Platform Tools</strong> installés.</li>
+    </ul>
+    <h3>Étapes</h3>
+    <ol>
+        <li><strong>Télécharger et Installer Scrcpy :</strong> Téléchargez depuis le <a href="https://github.com/Genymobile/scrcpy">GitHub officiel de Scrcpy</a> et extrayez les fichiers dans un dossier accessible.</li>
+        <li><strong>Activer le Mode Développeur sur le Téléphone :</strong> Allez dans <em>Paramètres &gt; À propos du téléphone &gt; Numéro de build</em> et appuyez <strong>7 fois</strong> sur le numéro de build pour activer les options pour les développeurs.</li>
+        <li><strong>Activer le Débogage USB :</strong> Allez dans <em>Paramètres &gt; Options pour les développeurs</em> et activez <strong>Débogage USB</strong>.</li>
+        <li><strong>Connecter le Téléphone à l'Ordinateur :</strong> Branchez le téléphone via un <strong>câble USB</strong> et autorisez le débogage USB sur votre téléphone si une invite apparaît.</li>
+        <li><strong>Lancer Scrcpy :</strong> Double-cliquez sur <code>scrcpy.exe</code> dans le dossier extrait. L'écran de votre téléphone devrait s'afficher sur votre ordinateur.</li>
+    </ol>
+
+    <h3>Utilisation de Scrcpy en Mode Sans Fil</h3>
+    <ol>
+        <li><strong>Configurer le Mode TCP/IP :</strong> Connectez votre téléphone via USB, ouvrez l'invite de commandes dans le dossier de Scrcpy et exécutez : <code>adb tcpip 5555</code></li>
+        <li><strong>Trouver l'Adresse IP du Téléphone :</strong> Allez dans <em>Paramètres &gt; Wi-Fi &gt; [Nom du réseau] &gt; Détails</em> et notez l'adresse IP (par exemple, <code>192.168.1.2</code>).</li>
+        <li><strong>Connecter via Wi-Fi :</strong> Déconnectez le câble USB, puis tapez dans l'invite de commandes : <code>adb connect 192.168.1.2:5555</code>. Si la connexion est réussie, lancez <code>scrcpy</code> comme d'habitude.</li>
+    </ol>
+
+    <h2>Méthode 3 : Utiliser "ApowerMirror" (Version Gratuite avec Filigrane)</h2>
+    <h3>Étapes</h3>
+    <ol>
+        <li><strong>Télécharger ApowerMirror :</strong> Téléchargez l'application sur le <a href="https://www.apowersoft.com/phone-mirror">site officiel d'ApowerMirror</a> pour le PC et installez l'application depuis le <strong>Google Play Store</strong> sur le téléphone.</li>
+        <li><strong>Projeter l'Écran via Wi-Fi :</strong> Assurez-vous que les deux appareils sont sur le même réseau Wi-Fi. Ouvrez l'application sur les deux appareils, appuyez sur <em>"Miroir"</em> sur le téléphone et sélectionnez votre PC.</li>
+        <li><strong>Projeter l'Écran via USB (Optionnel) :</strong> Connectez le téléphone au PC avec un câble USB et activez le débogage USB.</li>
+    </ol>
+
+    <h2>Méthode 4 : Utiliser "Vysor" (Version Gratuite Limitée)</h2>
+    <h3>Étapes</h3>
+    <ol>
+        <li><strong>Télécharger Vysor :</strong> Téléchargez depuis le <a href="https://www.vysor.io/">site officiel de Vysor</a> sur le PC et installez l'application sur le téléphone via le <strong>Google Play Store</strong>.</li>
+        <li><strong>Connecter le Téléphone au PC :</strong> Activez le débogage USB et branchez le téléphone via un câble USB.</li>
+        <li><strong>Lancer Vysor :</strong> Ouvrez Vysor sur le PC et cliquez sur <em>"View"</em> pour afficher l'écran du téléphone.</li>
+    </ol>
+
+    <h2>Résolution des Problèmes Communs</h2>
+    <h3>Problème : Le Téléphone se Déconnecte Lorsque le Débogage USB est Désactivé</h3>
+    <div class="warning">
+        <strong>Cause :</strong> Le débogage USB est nécessaire pour maintenir la connexion entre le téléphone et le PC lors de l'utilisation de certaines applications.
+    </div>
+    <h4>Solutions :</h4>
+    <ol>
+        <li><strong>Utiliser le Mode Sans Fil Sans Débogage USB :</strong> Avec des applications comme <strong>ApowerMirror</strong>, vous pouvez projeter l'écran via Wi-Fi sans le débogage USB.</li>
+        <li><strong>Maintenir le Débogage USB Activé :</strong> Cochez <em>"Toujours autoriser depuis cet ordinateur"</em> lorsque l'invite apparaît.</li>
+        <li><strong>Utiliser des Alternatives :</strong> Des applications comme <strong>Link to Windows</strong>, <strong>AirDroid</strong>, ou <strong>TeamViewer QuickSupport</strong> permettent un contrôle à distance sans débogage USB.</li>
+    </ol>
+
+    <h2>Conseils Supplémentaires</h2>
+    <ul>
+        <li><strong>Utiliser une Connexion Wi-Fi Stable :</strong> Pour éviter les interruptions lors de la projection sans fil.</li>
+        <li><strong>Tester Différentes Méthodes :</strong> Ce qui fonctionne le mieux peut varier en fonction de votre appareil et de vos besoins.</li>
+        <li><strong>Exploiter les Fonctionnalités Avancées :</strong> Des outils comme <strong>Scrcpy</strong> et <strong>ApowerMirror</strong> offrent des options comme l'enregistrement d'écran et le contrôle via clavier/souris.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Projeter l'écran de votre téléphone Android sur votre PC Windows peut être réalisé de plusieurs façons. Que vous préfériez utiliser des outils officiels comme <strong>Téléphone Link</strong> ou des applications tierces, ce guide vous a fourni des instructions détaillées pour chaque méthode.</p>
+
+    <h2>Ressources</h2>
+    <ul>
+        <li><a href="https://github.com/Genymobile/scrcpy">Scrcpy GitHub</a></li>
+        <li><a href="https://www.apowersoft.com/phone-mirror">ApowerMirror</a></li>
+        <li><a href="https://www.vysor.io/">Vysor</a></li>
+        <li><a href="https://developer.android.com/studio/releases/platform-tools">ADB Platform Tools</a></li>
+    </ul>
+</div>
+
+<footer>
+    <p>&copy; 2023 Guide de Projection Android sur Windows. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
